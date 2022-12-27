@@ -1,6 +1,6 @@
-import homeScreen from "./screens/HomeScreen.js";
+import HomeScreen from "./screens/HomeScreen.js";
 const router = () => {
     const main = document.getElementById('main-container');
-    main.innerHTML = homeScreen.render();
+    main.innerHTML = HomeScreen.render();
 };
 window.addEventListener('load', router);
