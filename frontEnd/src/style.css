@@ -34,7 +34,7 @@ a:hover{
 
 header{
   grid-area: header;
-  background-color: rgb(255, 102, 47);
+  background-color: rgb( 34, 139, 34);
   color:blue;
   display: flex;
   justify-content: space-between;
@@ -47,9 +47,10 @@ header a:hover{
 }
 
 header a{
-    color:blue;
+    color:rgb(205, 133, 63);
     font-weight: bold;
     text-decoration: none;
+    text-shadow: -1px 0 #000000, 0 1px #000000, 1px 0 #000000, 0 -1px #000000;
 }
 
 .brand a{
@@ -57,7 +58,7 @@ header a{
 }
 
 footer{
-  background-color: rgb(255, 102, 47);
+  background-color: rgb( 34, 139, 34);
   display: flex;
   justify-content: center;
   align-items: center;
