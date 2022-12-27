@@ -2,10 +2,10 @@ export default {
     products: [
         {
             _id: '1',
-            names: 'Italian Sausage',
+            name: 'Italian Sausage',
             region: 'Marche',
             image: '/images/product-1.jpg',
-            pricePerKg: 8.15,
+            price: 8.15(perKg),
             brand: 'Tomassoni',
             rating: 4.7,
             numReviews: 100,
@@ -13,10 +13,10 @@ export default {
         },
         {
             _id: '2',
-            names: 'Mozzarella di bufala',
+            name: 'Mozzarella di bufala',
             region: 'Campania',
             image: '/images/product-2.jpg',
-            pricePerKg: 16,
+            price: 16(perKg),
             brand: 'La Fattoria - Battipaglia',
             rating: 4.1,
             numReviews: 100,
@@ -24,7 +24,7 @@ export default {
         },
         {
             _id: '3',
-            names: 'Piadina Romagnola',
+            name: 'Piadina Romagnola',
             region: 'Emilia Romagna',
             image: '/images/product-3.jpg',
             price: 5,
@@ -35,10 +35,10 @@ export default {
         },
         {
             _id: '4',
-            names: 'Tartufo nero',
+            name: 'Tartufo nero',
             region: 'Umbria',
             image: '/images/product-4.jpg',
-            pricePerKg: 1500,
+            price: 1500(perKg),
             brand: 'Tartuferia',
             rating: 5,
             numReviews: 100,
@@ -46,7 +46,7 @@ export default {
         },
         {
             _id: '5',
-            names: 'Rosso Conero red Wine',
+            name: 'Rosso Conero red Wine',
             region: 'Marche',
             image: '/images/product-5.jpg',
             price: 13,
@@ -57,7 +57,7 @@ export default {
         },
         {
             _id: '6',
-            names: 'Italian Olive Oil',
+            name: 'Italian Olive Oil',
             region: 'Toscana',
             image: '/images/product-6.jpg',
             price: 9,
