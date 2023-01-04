@@ -8,7 +8,7 @@ const HomeScreen = {
         if(!response || !response.ok) {
             return `<div>Error in getting data</div>`;
         }
-        const products = await response.json();
+        const products = response.data;
 
         return `
         <ul class="products">
