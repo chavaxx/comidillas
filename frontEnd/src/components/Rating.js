@@ -1,7 +1,7 @@
 const Rating = {
   render: (props) => {
-    if (props.value) {
-      return "<div></div>";
+    if (!props.value) {
+      return '<div></div>';
     }
     return `
         <div class="rating">
@@ -13,6 +13,7 @@ const Rating = {
                     ? 'fa fa-star-half-o'
                     : 'fa fa-star-o'
                 }">
+                </i> 
             </span>
             <span>
                 <i class="${
@@ -22,6 +23,7 @@ const Rating = {
                  ? 'fa fa-star-half-o'
                  : 'fa fa-star-o'
                 }">
+                </i> 
             </span>
             <span>
                 <i class="${
@@ -31,6 +33,7 @@ const Rating = {
                  ? 'fa fa-star-half-o'
                  : 'fa fa-star-o'
                 }">
+                </i> 
             </span>
             <span>
                 <i class="${
@@ -40,6 +43,7 @@ const Rating = {
                  ? 'fa fa-star-half-o'
                  : 'fa fa-star-o'
                 }">
+                </i> 
             </span>
             <span>
                 <i class="${
@@ -49,6 +53,7 @@ const Rating = {
                  ? 'fa fa-star-half-o'
                  : 'fa fa-star-o'
                 }">
+                </i> 
             </span>
             <span> ${props.text || ''}</span>
         </div>
