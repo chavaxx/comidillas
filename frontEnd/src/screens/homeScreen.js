@@ -9,7 +9,7 @@ const HomeScreen = {
                 'Content-Type': 'application/json',
             },
         });
-        if(!response || !response.statusText !== 'OK') {
+        if(!response || response.statusText !== 'OK') {
             return `<div>Error in getting data</div>`;
         }
         const products = response.data;
