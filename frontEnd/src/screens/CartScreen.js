@@ -106,7 +106,7 @@ const CartScreen = {
             </div>
             <div class="cart-action">
                 <h3>
-                    Subtotal (${cartItems.reduce((a,c)=> a + c.qty, 0)} items): $${cartItems.reduce((a,c) => a + c.price * c.qty, 0)}
+                    Subtotal (${cartItems.reduce((a,c)=> a + c.qty, 0)} items): $${cartItems.reduce((a,c) => a + (c.qty<8?c.price:c.qty>15?c.price*0.84:c.price*0.92) * c.qty, 0)}
                 </h3>
                 <button id="checkout-button" class="primary fw">
                     Proceed to checkout
