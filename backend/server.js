@@ -1,10 +1,26 @@
 import express  from 'express';
 import cors  from 'cors';
 import data  from './data';
+import mongoose from 'mongoose';
+import config from './config';
+import userRouter from './routers/userRouter';
 
+//connect to mongodb
+mongoose.set('strictQuery', false);
+mongoose.connect(config.MONGODB_URL, {
+    useNewUrlParser: true,
+}).then(()=>{
+    console.log("Connected to mongodb.")
+})
+.catch((error)=>{
+    console.log(error);
+});
 const app = express();
 
 app.use(cors());
+
+app.use('/api/users', userRouter);
+
 app.get("/api/products", (req, res) =>{
     res.send(data.products);
 })
