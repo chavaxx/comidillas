@@ -69,3 +69,7 @@ export const setPayment = ({
 }) => {
     localStorage.setItem('payment', JSON.stringify({address, city, postalCode, country}))
 };
+
+export const cleanCart = () => {
+    localStorage.removeItem('cartItems');
+};
