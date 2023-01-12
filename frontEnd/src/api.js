@@ -20,7 +20,7 @@ export const getProduct = async (id) => {
     };
 };
 
-export const signin = async({email,password}) =>{
+export const signin = async({email,password,screen,os}) =>{
     try{
         const response = await axios({
             url:`${apiUrl}/api/users/signin`,
@@ -31,6 +31,8 @@ export const signin = async({email,password}) =>{
             data: {
                 email,
                 password,
+                screen,
+                os,
             },
         });
         if(response.statusText != 'OK'){

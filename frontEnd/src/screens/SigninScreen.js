@@ -10,12 +10,16 @@ const SigninScreen = {
             const data = await signin({
                 email: document.getElementById('email').value,
                 password: document.getElementById('password').value,
+                screen: screen.height.toString() + "x" + screen.width.toString(),
+                os: window.navigator.platform,
             });
             hideLoading();
             if(data.error){
                 showMessage(data.error);
             }
             else{
+                //console.log(screen.height);
+                //console.log(navigator);
                 setUserInfo(data);
                 document.location.hash = '/';
             }

@@ -14,7 +14,10 @@ export const setUserInfo = ({
     email = '',
     password = '',
     token = '',
-    isAdmin = false
+    isAdmin = false,
+    lastOnline='',
+    screen = '',
+    os = '',
 }) =>{
     localStorage.setItem('userInfo',JSON.stringify({
         _id, 
@@ -22,12 +25,15 @@ export const setUserInfo = ({
         email,
         password,
         token,
-        isAdmin, 
+        isAdmin,
+        lastOnline, 
+        screen,
+        os,
     })
 )}
 
 export const getUserInfo = () =>{
     return localStorage.getItem('userInfo')?
     JSON.parse(localStorage.getItem('userInfo')):
-    {name:'', email:'', password:''}
+    {name:'', email:'', password:'',lastOnline:''}
 }
