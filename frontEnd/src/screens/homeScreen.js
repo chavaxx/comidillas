@@ -1,5 +1,6 @@
 import axios from 'axios';
 import Rating from '../components/Rating';
+import { getUserInfo } from '../localStorage';
 import { hideLoading, showLoading } from '../utils';
 
 const HomeScreen = {
@@ -16,8 +17,11 @@ const HomeScreen = {
             return `<div>Error in getting data</div>`;
         }
         const products = response.data;
+        const {lastOnline} = getUserInfo();
+        const {name} = getUserInfo();
 
         return `
+        ${name?`<div class="content">Welcome ${name} you were last online at  ${lastOnline}</div>`:`<div></div>`}
         <ul class="products">
             ${products
                 .map(
