@@ -28,13 +28,13 @@ userRouter.get("/createadmin", expressAsyncHandler(async(req, res)=>{
 }));
 
 userRouter.post('/signin', expressAsyncHandler(async (req,res) =>{
-    const signinUser = await User.findOne({
+    let signinUser = await User.findOne({
         email: req.body.email,
         //password: req.body.password
     });
     //compare password with encrypted saved password using bcrypt
-    const correctPassword = true;
-    const firstPw = true;
+    var correctPassword = true;
+    var firstPw = true;
     if(signinUser.lastOnline != "new"){
          correctPassword = await signinUser.comparePassword(req.body.password);
          firstPw = false;
