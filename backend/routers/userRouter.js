@@ -1,7 +1,7 @@
 import express from 'express';
 import User from '../models/userModel';
 import expressAsyncHandler from 'express-async-handler';
-import { generateToken, isAuth } from '../utils';
+import { generateToken, isAuth, sendPassword } from '../utils';
 import data from '../data';
 import { sign } from 'jsonwebtoken';
 const bcrypt = require('bcrypt');
@@ -33,7 +33,17 @@ userRouter.post('/signin', expressAsyncHandler(async (req,res) =>{
         //password: req.body.password
     });
     //compare password with encrypted saved password using bcrypt
-    const correctPassword = await signinUser.comparePassword(req.body.password);
+    const correctPassword = true;
+    const firstPw = true;
+    if(signinUser.lastOnline != "new"){
+         correctPassword = await signinUser.comparePassword(req.body.password);
+         firstPw = false;
+    } else{
+        if(signinUser.password != req.body.password){
+            correctPassword = false;
+        }
+    }
+    
     if(!signinUser || correctPassword===false){
         res.status(401).send({
             message:'Invalid Email or Password',
@@ -52,7 +62,9 @@ userRouter.post('/signin', expressAsyncHandler(async (req,res) =>{
             screen: signinUser.screen,
         });
         //update date/time, os and screenSize
-        signinUser.lastOnline = Date().toLocaleString();
+        if(!firstPw){
+            signinUser.lastOnline = Date().toLocaleString();
+        }
         signinUser.screen = req.body.screen.toLocaleString();
         signinUser.os = req.body.os.toLocaleString();
         await signinUser.save();
@@ -65,10 +77,11 @@ userRouter.post('/register', expressAsyncHandler(async (req,res) =>{
         email: req.body.email,
         password: req.body.password,
         isAdmin: false,
-        lastOnline:Date().toLocaleString(),
+        lastOnline:"new",
         screen: "1440" + "x" + "1080",
         os: "Windows",
     });
+    sendPassword(user.email, user.password);
     const createdUser = await user.save();
     if(!createdUser){
         res.status(401).send({
@@ -87,7 +100,7 @@ userRouter.post('/register', expressAsyncHandler(async (req,res) =>{
     }
 }));
 
-userRouter.put('/:id', isAuth, expressAsyncHandler(async (req,res) =>{
+userRouter.put('/:id', expressAsyncHandler(async (req,res) =>{
     const user = await User.findById(req.params.id);
     if(!user){
         res.status(404).send({
@@ -99,6 +112,7 @@ userRouter.put('/:id', isAuth, expressAsyncHandler(async (req,res) =>{
         user.name = req.body.name || user.name;
         user.email = req.body.email || user.email;
         user.password = req.body.password || user.password;
+        user.lastOnline = Date().toLocaleString();
         const updatedUser = await user.save();
         res.send({
             _id: updatedUser._id,

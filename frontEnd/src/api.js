@@ -80,7 +80,7 @@ export const update = async({ name, email, password}) =>{
             method: 'PUT',
             headers:{
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer  ${token}`,
+                Authorization: `Bearer  ${token}`,
             },
             data: {
                 name,
@@ -159,4 +159,29 @@ export const getMyOrders = async() =>  {
         return { error: err.response ? err.response.data.message : err.message };
     }
     
+};
+
+export const updatePass = async({ password }) =>{
+    try{
+        const {_id, token } = getUserInfo();
+        const response = await axios({
+            url:`${apiUrl}/api/users/${_id}`,
+            method: 'PUT',
+            headers:{
+                'Content-Type': 'application/json',
+                //Authorization: `Bearer  ${token}`,
+            },
+            data: {
+                password,
+            },
+        });
+        if(response.statusText != 'OK'){
+            throw new Error(response.data.message);
+        }
+        return response.data
+    }
+    catch(err){
+        console.log(err);
+        return {error: err.response.data.message || err.message};
+    }
 };

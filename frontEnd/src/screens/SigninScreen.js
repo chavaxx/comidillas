@@ -12,24 +12,28 @@ const SigninScreen = {
                 password: document.getElementById('password').value,
                 screen: screen.height.toString() + "x" + screen.width.toString(),
                 os: window.navigator.platform,
+
             });
             hideLoading();
             if(data.error){
                 showMessage(data.error);
             }
             else{
-                //console.log(screen.height);
-                //console.log(navigator);
                 setUserInfo(data);
-                redirectUser();
+                if(getUserInfo().lastOnline==="new"){
+                    console.log("User data: ",getUserInfo());
+                    document.location.hash ='/setpass';
+                }
+                else{
+                    setUserInfo(data);
+                    redirectUser();
+                }
+                
             }
         });
 
     },
     render: () =>{
-        if(getUserInfo().name){
-            redirectUser();
-        }
         return `
         <div class="form-container">
             <form id="signin-form">

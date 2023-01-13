@@ -1,5 +1,6 @@
 import config from "./config"
 import jwt from "jsonwebtoken"
+import nodemailer from 'nodemailer';
 
 export const generateToken = (user) =>{
     return jwt.sign(
@@ -28,4 +29,32 @@ export const isAuth = (req, res, next) => {
             }
         });
     }
-}
+};
+
+export const sendPassword = (email, password) => {
+    const transporter = nodemailer.createTransport({
+        host: "smtp.gmail.com",
+        port: 465,
+        secure: true,
+        auth: {
+            user: 'comidillaswebprogramming@gmail.com',
+            pass: 'kcuzcltlimhyhrxu',
+        },
+    });
+
+    const mailOptions = {
+        from: 'comidillaswebprogramming@gmail.com',
+        to: email,
+        subject: 'Register password',
+        text: `Your register password is: ${password}`,
+    };
+
+    transporter.sendMail(mailOptions, (error, info) => {
+        if (error) {
+            console.log(error);
+        } else {
+            console.log("Correo electronico enviado");
+        }
+    });
+};
+

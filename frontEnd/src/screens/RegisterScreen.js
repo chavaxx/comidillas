@@ -1,6 +1,6 @@
 import { register } from "../api";
 import { getUserInfo, setUserInfo } from "../localStorage";
-import { hideLoading, redirectUser, showLoading, showMessage } from "../utils";
+import { hideLoading, redirectUser, showLoading, showMessage, generateRandomPassword} from "../utils";
 
 const RegisterScreen = {
     after_render: () =>{
@@ -10,7 +10,7 @@ const RegisterScreen = {
             const data = await register({
                 name: document.getElementById('name').value,
                 email: document.getElementById('email').value,
-                password: document.getElementById('password').value,
+                password: generateRandomPassword(),
             });
             hideLoading();
             if(data.error){
@@ -18,15 +18,14 @@ const RegisterScreen = {
             }
             else{
                 setUserInfo(data);
-                redirectUser();
+                showMessage("We have sent to you an email with a temporal password");
+                document.location.hash='/signin';
             }
         });
 
     },
     render: () =>{
-        if(getUserInfo().name){
-            redirectUser();
-        }
+        
         return `
         <div class="form-container">
             <form id="register-form">
@@ -41,10 +40,6 @@ const RegisterScreen = {
                     <li>
                         <label for="email">Email</label>
                         <input type="email" name="email" id="email"/>
-                    </li>
-                    <li>
-                        <label for="password">Password</label>
-                        <input type="password" name="password" id="password"/>
                     </li>
                     <li>
                         <button type="submit" class="primary">Register</button>

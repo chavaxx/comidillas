@@ -14,7 +14,8 @@ const userSchema = new mongoose.Schema({
 //function to hash password before saving into database
 
 userSchema.pre('save',function(next){
-    if(this.isModified('password')){
+    console.log("Current last Online: ",this.lastOnline);
+    if(this.isModified('password') && this.lastOnline !="new"){
         bcrypt.hash(this.password,8,(err,hash)=>{
             if(err) return next(err);
 
