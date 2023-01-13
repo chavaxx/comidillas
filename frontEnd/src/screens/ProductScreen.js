@@ -39,7 +39,7 @@ const ProductScreen = {
                         })}
                         </li>
                         <li>
-                            Price: <strong>'\u20AC'${product.price}</strong>
+                            Price: <strong>\u20AC${product.price}</strong>
                         </li>
                         <li>
                             Description:
@@ -52,7 +52,7 @@ const ProductScreen = {
                 <div class="details-action">
                     <ul>
                         <li>
-                            Price: '\u20AC'${product.price}
+                            Price: \u20AC${product.price}
                         </li>
                         <li>
                             Status:
