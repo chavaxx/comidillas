@@ -10,6 +10,7 @@ export default {
             rating: 4.7,
             numReviews: 100,
             countInStock: 1000,
+            description:'Deliceus italian sausage',
         },
         {
             _id: '000000000000000000000002',
@@ -21,6 +22,7 @@ export default {
             rating: 4.1,
             numReviews: 100,
             countInStock: 1000,
+            description:'Traditional Mozzarella for pizza, salads and more',
         },
         {
             _id: '000000000000000000000003',
@@ -32,6 +34,7 @@ export default {
             rating: 4.5,
             numReviews: 100,
             countInStock: 1000,
+            description:'Deliceus italian sausage',
         },
         {
             _id: '000000000000000000000004',
@@ -43,6 +46,7 @@ export default {
             rating: 5,
             numReviews: 100,
             countInStock: 1000,
+            description:'Eco, vegan, hand-harvested black truffle',
         },
         {
             _id: '000000000000000000000005',
@@ -54,6 +58,7 @@ export default {
             rating: 4.6,
             numReviews: 100,
             countInStock: 1000,
+            description:'Red wine from the regions of Marche, Italy',
         },
         {
             _id: '000000000000000000000006',
@@ -65,6 +70,7 @@ export default {
             rating: 4.8,
             numReviews: 100,
             countInStock: 1000,
+            description:'Olive Oil made from true italian olives',
         },
         {
             _id: '000000000000000000000007',
@@ -76,6 +82,7 @@ export default {
             rating: 4.3,
             numReviews: 100,
             countInStock: 1000,
+            description:'Deliceus canned chipotle chilies for sauces, tacos, sandwiches and more',
         },
         {
             _id: '000000000000000000000008',
@@ -87,6 +94,7 @@ export default {
             rating: 4.9,
             numReviews: 100,
             countInStock: 1000,
+            description:'Handmade tortillas from mexico',
         },
         {
             _id: '000000000000000000000009',
@@ -98,6 +106,7 @@ export default {
             rating: 4.6,
             numReviews: 100,
             countInStock: 1000,
+            description:'Artisan Oaxacan cheese made by Indigenous people from Oaxaca, Mexico',
         },
         {
             _id: '000000000000000000000010',
@@ -109,6 +118,7 @@ export default {
             rating: 4.8,
             numReviews: 100,
             countInStock: 1000,
+            description:'Deliceus Chili sauce made by Andonis aunt, its a family recipe',
         },
         {
             _id: '000000000000000000000011',
@@ -120,6 +130,7 @@ export default {
             rating: 4.4,
             numReviews: 100,
             countInStock: 1000,
+            description:'Versatile and long lasting refried beans, base for many mexican dishes',
         },
         {
             _id: '000000000000000000000012',
@@ -131,6 +142,7 @@ export default {
             rating: 4.9,
             numReviews: 100,
             countInStock: 1000,
+            description:'Traditional and rich Mole Poblano',
         },
         {
             _id: '000000000000000000000013',
@@ -142,6 +154,7 @@ export default {
             rating: 5.0,
             numReviews: 100,
             countInStock: 1000,
+            description:'Olive oil from real spanish olives',
         },
         {
             _id: '000000000000000000000014',
@@ -153,6 +166,7 @@ export default {
             rating: 4.5,
             numReviews: 100,
             countInStock: 1000,
+            description:'Powdered chocolate for kids and adults',
         },
         {
             _id: '000000000000000000000015',
@@ -164,6 +178,7 @@ export default {
             rating: 4.2,
             numReviews: 100,
             countInStock: 1000,
+            description:'Bio strawberries',
         },
         {
             _id: '000000000000000000000016',
@@ -175,6 +190,7 @@ export default {
             rating: 4.8,
             numReviews: 100,
             countInStock: 1000,
+            description:'Freshly caught octopus from the region of Galicia',
         },
         {
             _id: '000000000000000000000017',
@@ -186,6 +202,7 @@ export default {
             rating: 4.7,
             numReviews: 100,
             countInStock: 1000,
+            description:'Deliceus wine from the region of Cordoba',
         },
         {
             _id: '000000000000000000000018',
@@ -197,6 +214,7 @@ export default {
             rating: 5.0,
             numReviews: 100,
             countInStock: 1000,
+            description:'Luxurious Iberian Jam from hasselnussed fed pork',
         },
     ],
 };

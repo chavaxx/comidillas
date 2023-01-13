@@ -2,6 +2,7 @@ import axios from 'axios';
 import Rating from '../components/Rating';
 import { getUserInfo } from '../localStorage';
 import { hideLoading, showLoading } from '../utils';
+import 'bootstrap';
 
 const HomeScreen = {
     render: async () => {
@@ -21,7 +22,7 @@ const HomeScreen = {
         const {name} = getUserInfo();
 
         return `
-        ${name?`<div class="content">Welcome ${name} you were last online at  ${lastOnline}</div>`:`<div></div>`}
+        ${name?`<div class="content welcome">Welcome ${name} you were last online at  ${lastOnline}</div>`:`<div></div>`}
         <ul class="products">
             ${products
                 .map(
@@ -52,6 +53,9 @@ const HomeScreen = {
             </li>
             `
             ).join('\n')}
+            
+        </ul>
+        
         `;
     },
 };
