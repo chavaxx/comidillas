@@ -1,4 +1,4 @@
-import HomeScreen from "./screens/HomeScreen.js";
+import homeScreen from "./screens/homeScreen.js";
 import ProductScreen from "./screens/ProductScreen.js";
 import { hideLoading, parseRequestUrl, showLoading } from "./utils.js";
 import Error404Screen from "./screens/Error404Screen.js";
@@ -10,10 +10,10 @@ import RegisterScreen from "./screens/RegisterScreen.js";
 import ShippingScreen from "./screens/ShippingScreen.js";
 import PaymentScreen from "./screens/PaymentScreen.js";
 import PlaceOrderScreen from "./screens/PlaceOrderScreen.js";
-import OrderScreen from "./screens/OrderScreen.js";
+import OrderScreen from "./screens/OrderScreen";
 
 const routes = {
-    '/': HomeScreen,
+    '/': homeScreen,
     '/product/:id': ProductScreen,
     '/order/:id': OrderScreen,
     '/cart/:id':CartScreen,

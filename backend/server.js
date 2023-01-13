@@ -24,6 +24,7 @@ app.use(cors());
 app.use(bodyParser.json());
 
 app.use('/api/users', userRouter);
+
 app.use('/api/orders', orderRouter);
 
 app.get("/api/products", (req, res) =>{
@@ -39,10 +40,10 @@ app.get('/api/products/:id', (req, res) => {
 });
 
 app.use((err,req,res,next) =>{
-    const status = error.name && err.name === 'ValidationError'? 400:500;
+    const status = err.name && err.name === 'ValidationError'? 400:500;
     res.status(status).send({message: err.message})
 })
 
-app.listen(5000, () => {
+app.listen(5678, () => {
     console.log('serve at http://localhost:5000')
 })

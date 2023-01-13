@@ -1,7 +1,6 @@
 import { apiUrl } from "./config";
-import axios from 'axios';
+import axios from "axios";
 import { getUserInfo } from "./localStorage";
-import { response } from "express";
 
 export const getProduct = async (id) => {
     try {
@@ -71,7 +70,7 @@ export const register = async({ name, email, password}) =>{
     }
 };
 
-export const upadte = async({ name, email, password}) =>{
+export const update = async({ name, email, password}) =>{
     try{
         const {_id, token } = getUserInfo();
         const response = await axios({
@@ -98,31 +97,31 @@ export const upadte = async({ name, email, password}) =>{
     }
 };
 
-export const createOrder = async(order) => {
+export const createOrder = async (order) => {
     try {
-    const {token} = getUserInfo();
-    const response = axios({
+      const { token } = getUserInfo();
+      const response = await axios({
         url: `${apiUrl}/api/orders`,
-        method: 'POST',
+        method: "POST",
         headers: {
-            'Content-Type': 'application/json',
-            Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
         },
         data: order,
-    });
-    if (response.statusText !== 'Created') {
-        throw new Error(response.data.message);
+      });
+      if (response.statusText !== "Created") {
+         throw new Error(response.data.message);
+     }
+      return response.data;
+    } catch (err) {
+      return { error: err.response ? err.response.data.message : err.message };
     }
-    return response.data;
-    } catch(err) {
-        return {error: (err.response? err.response.data.message: err.message)};
-    }
-};
+  };
 
-export const getOrder = async(id) => {
+export const getOrder =  async(id) => {
     try {
         const {token} = getUserInfo();
-        const data = await axios({
+        const response = await axios({
             url: `${apiUrl}/api/orders/${id}`,
             headers: {
                 'Content-Type': 'application/json',
@@ -132,16 +131,17 @@ export const getOrder = async(id) => {
         if (response.statusText !== 'OK') {
             throw new Error(response.data.message);
         }
-        return response.data;   
+        return response.data;
     } catch (err) {
-        return { error: err.message };
+        return { error: err.message }
     }
     
+
 };
 
-export const getMyOrders = async() => {
+export const getMyOrders = async() =>  {
     try {
-        const {token} = getUserInfo();
+        const { token } = getUserInfo();
         const response = await axios({
             url: `${apiUrl}/api/orders/mine`,
             headers: {
@@ -157,4 +157,4 @@ export const getMyOrders = async() => {
         return { error: err.response ? err.response.data.message : err.message };
     }
     
-}
+};

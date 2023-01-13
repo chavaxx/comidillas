@@ -1,24 +1,27 @@
-import { getUserInfo, setPayment } from "../localStorage";
-import CheckoutSteps from "../components/CheckoutSteps";
+import { getUserInfo, setPayment } from '../localStorage';
+import CheckoutSteps from '../components/CheckoutSteps';
 
 const PaymentScreen = {
-    after_render: () =>{
-    
-        document.getElementById("payment-form").addEventListener("submit", async(e) => {
+    after_render: () => {
+        document
+        .getElementById('payment-form')
+        .addEventListener('submit', async (e) => {
             e.preventDefault();
-            const paymentMethod = document.querySelector('input[name="payment-method"]:checked');
+            const paymentMethod = document.querySelector(
+                'input[name="payment-method"]:checked'
+                ).value;
             setPayment({ paymentMethod });
-            document.location.hash = '/payment';
+            document.location.hash = '/placeorder';
         });
 
     },
     render: () => {
-        const {name} = getUserInfo();
-        if(!name){
-            document.location.hash='/';
+        const { name } = getUserInfo();
+        if (!name) {
+            document.location.hash = '/';
         }
         return `
-        ${CheckoutSteps.render({step1: true, step2: true, step3: true})}
+        ${CheckoutSteps.render({ step1: true, step2: true, step3: true })}
         <div class="form-container">
             <form id="payment-form">
                 <ul class="form-items">
@@ -27,13 +30,19 @@ const PaymentScreen = {
                     </li>
                     <li>
                         <div>
-                            <input type="radio" name="payment-method" id="paypal" value="Paypal" checked />
-                            <label for="paypal">Paypal</label>
+                            <input type="radio"
+                            name="payment-method"
+                            id="paypal"
+                            value="Paypal"
+                            checked />
+                            <label for="paypal" >PayPal</label>
                         </div>
                     </li>
                     <li>
                         <div>
-                            <input type="radio" name="creditcard-method" id="creditcard" value="Credit Card"/>
+                            <input type="radio"
+                            name="payment-method"
+                            id="creditcard" value="Credit Card"/>
                             <label for="creditcard">Credit Card</label>
                         </div>
                     </li>
@@ -44,7 +53,7 @@ const PaymentScreen = {
             </form>
         </div>
         `;
-    }
+    },
 };
 
 export default PaymentScreen;
