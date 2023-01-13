@@ -16,10 +16,11 @@ const convertCartToOrder = () => {
     if (!payment.paymentMethod) {
       document.location.hash = '/payment';
     }
-    const itemsPrice = orderItems.reduce((a, c) => a + c.price * c.qty, 0);
+    //const itemsPrice = orderItems.reduce((a, c) => a + c.price * c.qty, 0);
+    const itemsPrice = orderItems.reduce((a,c) => a + (c.qty<8?c.price:c.qty>15?c.price*0.84:c.price*0.92) * c.qty, 0)
     const shippingPrice = itemsPrice > 100 ? 0 : 10;
     const taxPrice = Math.round(0.15 * itemsPrice * 100) / 100;
-    const totalPrice = itemsPrice + shippingPrice + taxPrice;
+    const totalPrice = (itemsPrice + shippingPrice + taxPrice).toFixed(2);
     return {
       orderItems,
       shipping,
@@ -101,7 +102,7 @@ const PlaceOrderScreen = {
                                                 </div>
                                                 <div> Qty: ${item.qty} </div>
                                             </div>
-                                            <div class="cart-price"> $${item.price}</div>
+                                            <div class="cart-price"> \u20AC${(item.qty<8?item.price:item.qty>15?item.price*0.84:item.price*0.92).toFixed(2)}</div>
                                         </li>
                                     `)
                                 .join('\n')}
@@ -113,10 +114,10 @@ const PlaceOrderScreen = {
                                 <li>
                                     <h2>Summary</h2>
                                 </li>
-                                <li><div> Items</div><div>$${itemsPrice}</div></li>
-                                <li><div> Shipping</div><div>$${shippingPrice}</div></li>
-                                <li><div> Tax</div><div>$${taxPrice}</div></li>
-                                <li class="total"><div> Total</div><div>${totalPrice}</div></li>
+                                <li><div> Items</div><div>\u20AC${itemsPrice}</div></li>
+                                <li><div> Shipping</div><div>\u20AC${shippingPrice}</div></li>
+                                <li><div> Tax</div><div>\u20AC${taxPrice}</div></li>
+                                <li class="total"><div> Total</div><div>\u20AC${totalPrice}</div></li>
                                 <li>
                                 <button id="placeorder-button" class="primary fw"> Place Order </button>
                         </div>

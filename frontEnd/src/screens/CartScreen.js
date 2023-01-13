@@ -62,6 +62,7 @@ const CartScreen = {
             })
         }
         const cartItems = getCartItems();
+        const totalItems = cartItems.reduce((a,c)=> a + c.qty, 0);
         return ` <div class ="content cart">
             <div class = "cart-list">
                 <ul class= "cart-list-container">
@@ -97,7 +98,7 @@ const CartScreen = {
                                     </div>
                                 </div>
                                 <div class="cart-price">
-                                    $${item.price}
+                                    \u20AC${item.price} discounted price: \u20AC${(item.qty<8?item.price:item.qty>15?item.price*0.84:item.price*0.92).toFixed(2)}
                                 </div>
                             </li>`).join('\n')
                         }
@@ -106,7 +107,8 @@ const CartScreen = {
             </div>
             <div class="cart-action">
                 <h3>
-                    Subtotal (${cartItems.reduce((a,c)=> a + c.qty, 0)} items): $${cartItems.reduce((a,c) => a + (c.qty<8?c.price:c.qty>15?c.price*0.84:c.price*0.92) * c.qty, 0)}
+                    
+                    Subtotal (${totalItems} items): \u20AC${(cartItems.reduce((a,c) => a + (c.qty<8?c.price:c.qty>15?c.price*0.84:c.price*0.92) * c.qty, 0)).toFixed(2)}
                 </h3>
                 <button id="checkout-button" class="primary fw">
                     Proceed to checkout
