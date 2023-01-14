@@ -52,7 +52,7 @@ const ProfileScreen = {
           </li>
           <li>
             <label for="password">Password</label>
-            <input type="password" name="password" id="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{9,}" />
+            <input type="password" name="password" id="password" pattern="^(?=.{8,32}$)(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9]).*" />
           </li>
           <li>
             <button type="submit" class="primary">Update</button>

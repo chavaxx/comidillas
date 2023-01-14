@@ -50,7 +50,7 @@ export default {
         },
         {
             _id: '000000000000000000000005',
-            name: 'Rosso Conero red Wine',
+            name: 'Rosso Conerö red Wine',
             region: 'Marche',
             image: './images/product-5.jpg',
             price: 13,
