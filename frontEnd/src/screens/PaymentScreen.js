@@ -1,5 +1,6 @@
 import { getUserInfo, setPayment } from '../localStorage';
 import CheckoutSteps from '../components/CheckoutSteps';
+import { showMessage } from '../utils';
 
 const PaymentScreen = {
     after_render: () => {
@@ -7,11 +8,17 @@ const PaymentScreen = {
         .getElementById('payment-form')
         .addEventListener('submit', async (e) => {
             e.preventDefault();
-            const paymentMethod = document.querySelector(
-                'input[name="payment-method"]:checked'
-                ).value;
-            setPayment({ paymentMethod });
-            document.location.hash = '/placeorder';
+            if(document.getElementById('consent').checked){
+                const paymentMethod = document.querySelector(
+                    'input[name="payment-method"]:checked'
+                    ).value;
+                setPayment({ paymentMethod });
+                document.location.hash = '/placeorder';
+            }
+            else{
+                showMessage("Please accept the privacy policy")
+            }
+            
         });
 
     },
@@ -45,6 +52,10 @@ const PaymentScreen = {
                             id="creditcard" value="Credit Card"/>
                             <label for="creditcard">Credit Card</label>
                         </div>
+                    </li>
+                    <li>
+                        <h3>Privacy policy</h3>
+                        <div><input type="checkbox" name="consent"  required id="consent"> Accept usage of data</div>
                     </li>
                     <li>
                         <button type="submit" class="primary">Continue</button>

@@ -1,5 +1,5 @@
 import { getProduct } from "../api";
-import { getCartItems, setCartItems } from "../localStorage";
+import { getCartItems, getUserInfo, setCartItems } from "../localStorage";
 import { parseRequestUrl, rerender } from "../utils";
 
 const addToCart = (item,forceUpdate = false) =>{
@@ -45,7 +45,13 @@ const CartScreen = {
             });
         });
         document.getElementById("checkout-button").addEventListener("click", () =>{
-            document.location.hash = '/signin';
+            if(getUserInfo().name){
+                document.location.hash = '/shipping';
+            }
+            else{
+                document.location.hash = '/signin';
+            }
+            
         })
     },
     render: async () =>{
