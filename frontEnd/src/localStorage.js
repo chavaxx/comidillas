@@ -50,6 +50,7 @@ export const getShipping = () => {
         city: '',
         postalCode: '',
         country: '',
+        delivery: '',
     };
     return shipping;
 };
@@ -58,8 +59,9 @@ export const setShipping = ({
     city = '',
     postalCode = '',
     country = '',
+    delivery = '',
 }) => {
-    localStorage.setItem('shipping', JSON.stringify({address, city, postalCode, country}))
+    localStorage.setItem('shipping', JSON.stringify({address, city, postalCode, country, delivery }))
 };
 
 export const getPayment = () => {

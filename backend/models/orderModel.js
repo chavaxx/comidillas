@@ -17,6 +17,7 @@ const orderSchema = new mongoose.Schema(
             city: String,
             postalCode: String,
             country: String,
+            delivery: String,
         },
         payment: {
             paymentMethod: String,
@@ -29,6 +30,7 @@ const orderSchema = new mongoose.Schema(
         itemsPrice: Number,
         taxPrice: Number,
         shippingPrice: Number,
+        deliveryPrice: Number,
         totalPrice: Number,
         isPaid: { type: Boolean, required: true, default: false },
         paidAt: Date,

@@ -13,6 +13,7 @@ const OrderScreen = {
             itemsPrice,
             shippingPrice,
             taxPrice,
+            deliveryPrice,
             totalPrice,
             isDelivered,
             deliveredAt,
@@ -28,7 +29,7 @@ const OrderScreen = {
                                 <h2>Shipping</h2>
                                 <div>
                                 ${shipping.address}, ${shipping.city}, ${shipping.postalCode},
-                                ${shipping.country}
+                                ${shipping.country}, ${shipping.delivery},
                                 </div>
                                 ${isDelivered ? `<div class="success">Delivered at ${deliveredAt}</div>` :
                                 `<div class="error">Not delivered</div>`
@@ -74,10 +75,10 @@ const OrderScreen = {
                                 <li>
                                     <h2>Summary</h2>
                                 </li>
-                                <li><div> Items</div><div>$${itemsPrice}</div></li>
-                                <li><div> Shipping</div><div>$${shippingPrice}</div></li>
-                                <li><div> Tax</div><div>$${taxPrice}</div></li>
-                                <li class="total"><div> Total</div><div>${totalPrice}</div></li>
+                                <li><div> Items</div><div>\u20AC${itemsPrice}</div></li>
+                                <li><div> Shipping</div><div>\u20AC${shippingPrice}</div></li>
+                                <li><div> Tax</div><div>\u20AC${taxPrice}</div></li>
+                                <li class="total"><div> Total</div><div>\u20AC${totalPrice}</div></li>
                                 <li>
                         </div>
                     </div>

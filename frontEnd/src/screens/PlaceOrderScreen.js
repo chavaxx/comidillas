@@ -20,7 +20,8 @@ const convertCartToOrder = () => {
     const itemsPrice = orderItems.reduce((a,c) => a + (c.qty<8?c.price:c.qty>15?c.price*0.84:c.price*0.92) * c.qty, 0)
     const shippingPrice = itemsPrice > 100 ? 0 : 10;
     const taxPrice = Math.round(0.15 * itemsPrice * 100) / 100;
-    const totalPrice = (itemsPrice + shippingPrice + taxPrice).toFixed(2);
+    const deliveryPrice = shipping.delivery == "DHL Express"? 67 : shipping.delivery =="DHL"? 0:-10;
+    const totalPrice = (itemsPrice + shippingPrice + taxPrice + deliveryPrice).toFixed(2);
     return {
       orderItems,
       shipping,
@@ -28,6 +29,7 @@ const convertCartToOrder = () => {
       itemsPrice,
       shippingPrice,
       taxPrice,
+      deliveryPrice,
       totalPrice,
     };
   };
@@ -58,6 +60,7 @@ const PlaceOrderScreen = {
             itemsPrice,
             shippingPrice,
             taxPrice,
+            deliveryPrice,
             totalPrice,
         } = convertCartToOrder();
             return `
@@ -74,7 +77,7 @@ const PlaceOrderScreen = {
                                 <h2>Shipping</h2>
                                 <div>
                                 ${shipping.address}, ${shipping.city}, ${shipping.postalCode},
-                                ${shipping.country}
+                                ${shipping.country}, ${shipping.delivery}
                                 </div>
                             </div>
                             <div>
@@ -117,6 +120,7 @@ const PlaceOrderScreen = {
                                 <li><div> Items</div><div>\u20AC${itemsPrice}</div></li>
                                 <li><div> Shipping</div><div>\u20AC${shippingPrice}</div></li>
                                 <li><div> Tax</div><div>\u20AC${taxPrice}</div></li>
+                                <li><div> Delivery fee</div><div>\u20AC${deliveryPrice}</div></li>
                                 <li class="total"><div> Total</div><div>\u20AC${totalPrice}</div></li>
                                 <li>
                                 <button id="placeorder-button" class="primary fw"> Place Order </button>

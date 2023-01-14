@@ -11,6 +11,7 @@ const ShippingScreen = {
                 city: document.getElementById('city').value,
                 postalCode: document.getElementById('postalCode').value,
                 country: document.getElementById('country').value,
+                delivery: document.getElementById('delivery').value,
             });
             document.location.hash = '/payment';
         });
@@ -21,7 +22,7 @@ const ShippingScreen = {
         if(!name){
             document.location.hash='/';
         }
-        const { address, city, postalCode, country } = getShipping();
+        const { address, city, postalCode, country, delivery } = getShipping();
         return `
         ${CheckoutSteps.render({step1: true, step2: true})}
         <div class="form-container">
@@ -45,6 +46,15 @@ const ShippingScreen = {
                     <li>
                         <label for="country">Country</label>
                         <input type="text" name="country" id="country" value="${country}"/>
+                    </li>
+                    <li>
+                        <label for="delivery">Choose a delivery option:</label>
+
+                        <select name="delivery" id="delivery">
+                            <option value="DPD">DPD</option>
+                            <option value="DHL">DHL</option>
+                            <option value="DHL Express">DHL Express</option>
+                        </select> 
                     </li>
                     <li>
                         <button type="submit" class="primary">Continue</button>
